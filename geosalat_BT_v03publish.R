@@ -152,6 +152,12 @@ plot(bt_coef3, bt_coef4[2:43]) ## koeficienty pro Prahu se prakticky neliší od
 ### Odhad reliability parametrů --------------------------------------------------------------
 
 partab <- summary(bt_mod4)
+
+## Reliabilita odhadu parametrů surovin pro Prahu (po odečtení krajových rozdílů)
+## Skvělá!
+var(partab$coefficients[2:43, "Estimate"])/(
+  var(partab$coefficients[2:43, "Estimate"]) + mean(partab$coefficients[2:43, "Std. Error"]))
+
 ## Reliabilita odhadu parametrů surovin uvnitř jednotlivých krajů
 rel_kraj <- NULL
 for (i in 0:13) {
@@ -251,20 +257,20 @@ legend("bottomright", colnames(bt_coef4_tab), col=cols, cex=.75, pch = 16, bg = 
 # CONS: Výsledky parametrů mohou být zkreslené, kvůli nedodržení předpokladů (viz výše)
 
 ## Odhad modelu. Pozor, trvá dlouho; na Intel i5-7200U CPU s 2.5 GHz celkem 49 minut
-system.time(bt_mod2 <- glmer(response ~ 0 + `Avokádo` + `Balkánský sýr` + `Brambory` + `Celer` + `Čerstvá pažitka` + `Červená řepa` + `Česnek` + 
+system.time(bt_mod2 <- glmer(response ~ 0 + `Avokádo` + `Balkánský sýr` + `Celer` + `Čerstvá pažitka` + `Červená řepa` + `Česnek` + 
                                `Cherry rajčata` + `Cibule` + `Cibulová nať` + `Citron` + `Cizrna` + `Cuketa` + `Cukr` + `Dijonská hořčice` + 
                                `Gothaj` + `Hrášek` + `Jablko` + `Kmín` + `Kvasný ocet` + `Ledový salát` + `Majonéza` + `Med` + `Mletá paprika` + 
                                `Mrkev` + `Nakládané okurky` + `Olivový olej` + `Olomoucký syreček` + `Paprika` + `Pepř` + `Petržel` + 
                                `Plnotučná hořčice` + `Pomeranč` + `Řapíkatý celer` + `Ředkvičky` + `Salám Junior` + `Šalotka` + `Slunečnicový olej` + 
                                `Šunka` + `Tatarská omáčka` + `Uzené maso` + `Vejce` + `Vinný ocet` + 
-                               (0 + `Avokádo` + `Balkánský sýr` + `Brambory` + `Celer` + `Čerstvá pažitka` + `Červená řepa` + `Česnek` + 
+                               (0 + `Avokádo` + `Balkánský sýr` + `Celer` + `Čerstvá pažitka` + `Červená řepa` + `Česnek` + 
                                   `Cherry rajčata` + `Cibule` + `Cibulová nať` + `Citron` + `Cizrna` + `Cuketa` + `Cukr` + `Dijonská hořčice` + 
                                   `Gothaj` + `Hrášek` + `Jablko` + `Kmín` + `Kvasný ocet` + `Ledový salát` + `Majonéza` + `Med` + `Mletá paprika` + 
                                   `Mrkev` + `Nakládané okurky` + `Olivový olej` + `Olomoucký syreček` + `Paprika` + `Pepř` + `Petržel` + 
                                   `Plnotučná hořčice` + `Pomeranč` + `Řapíkatý celer` + `Ředkvičky` + `Salám Junior` + `Šalotka` + `Slunečnicový olej` + 
                                   `Šunka` + `Tatarská omáčka` + `Uzené maso` + `Vejce` + `Vinný ocet` || kraj), 
                              verbose = 2, nAGQ = 0, 
-                             datbt2, family = binomial()))
+                             datbt, family = binomial()))
 save(bt_mod2, file= "bt_mod2.rData")
 summary(bt_mod2)
 
