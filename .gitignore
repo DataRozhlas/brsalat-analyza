@@ -1,0 +1,10 @@
+.vscode
+*.json
+brsalat.zip
+*.csv
+!geosalat.csv
+!codebook.csv
+*.zip
+geosalat_BT_v01.R
+geosalat_BT_v02.R
+*.rData
