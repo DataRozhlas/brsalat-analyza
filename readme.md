@@ -6,7 +6,7 @@ Výsledný článek: [Co do bramborového salátu patří, a co už radši ne? M
 
 Autorem analýzy je psychometrik [Hynek Cígler](https://github.com/hynekcigler) z Masarykovy univerzity.
 
-Pro zopoakování analýzy potřebujete volně dostupný software [R](https://www.r-project.org/), doporučujeme také nějaké pohodlné IDE jako je [RStudio](https://www.rstudio.com/).
+Pro zopakování analýzy potřebujete volně dostupný software [R](https://www.r-project.org/), doporučujeme také nějaké pohodlné IDE jako je [RStudio](https://www.rstudio.com/).
 
 V něm pak stačí otevřít soubor s analýzou `geosalat_BT_v03publish.R` a užít si ji krok za krokem.
 
